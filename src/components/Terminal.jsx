@@ -1,9 +1,8 @@
 import React, { PureComponent } from 'react';
 import { Terminal as XTerminal } from 'xterm';
 import * as fit from 'xterm/lib/addons/fit/fit';
-
-const os = require('os');
-const pty = require("node-pty");
+import * as os from 'os';
+import * as pty from 'node-pty';
 
 const shell = process.env[os.platform() === 'win32' ? 'COMSPEC' : 'SHELL'];
 
