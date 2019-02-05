@@ -1,9 +1,10 @@
 ## Welcome to Termor
 SSH & RDP open sourced solution for all platforms
 
-## Technologies:
+## Main Libraries:
 - React
 - Reactstrap
+- Xterm.js
 - Electron
 
 ## Installing
