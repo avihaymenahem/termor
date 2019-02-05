@@ -1,0 +1,100 @@
+* {
+    -webkit-appearance: none;
+    outline: none;
+}
+
+html, body, #root, .main-layout-container {
+    height: 100%;
+}
+
+body {
+    background-color: rgb(20,22,41);
+    color: #fff;
+    font-size: 12px;
+}
+
+.container-fluid {
+    padding: 0;
+}
+
+.sidebar {
+    height: 100%;
+    background-color: rgb(29,32,51);
+}
+
+.sidebar ul {
+    border-right: 1px solid rgba(0,0,0,0.3);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar ul li {
+    clear: both;
+    overflow: hidden;
+    padding: 12px 10px;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+    color: rgba(255,255,255,0.5);
+}
+
+.sidebar ul li.extra-height {
+    padding: 20px 10px;
+}
+
+.sidebar ul li .icon {
+    background-color: rgba(70,74,87, 1);
+    width: 28px;
+    height: 28px;
+    line-height: 12px;
+    float: left;
+    text-align: center;
+    overflow: hidden;
+    padding: 7px;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.sidebar ul li .text {
+    float: left;
+    line-height: 28px;
+}
+
+.sidebar ul li:hover,
+.sidebar ul li.active {
+    background-color: rgba(63,66,87,1);
+    color: rgba(255,255,255,1);
+    cursor: pointer;
+}
+
+.sidebar ul li:hover .icon,
+.sidebar ul li.active .icon {
+    border: 1px solid #fff;
+}
+
+.top-connect-bar {
+    height: 58px; 
+    padding: 7px;
+    background-color: rgb(40,42,60);
+}
+
+.top-connect-bar input {
+    width: 100%;
+    background-color: rgb(20,22,41);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 3px;
+    height: 100%;
+    color: #fff;
+    padding: 15px;
+}
+
+.top-connect-bar button {
+    cursor: pointer;
+    position: absolute;
+    right: 14px;
+    background-color: rgba(63,66,87,1);
+    border: 1px solid rgba(255,255,255,0.2);
+    top: 14px;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
