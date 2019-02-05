@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHistory, faArrowAltCircleRight, faCode, faFolder, faServer } from "@fortawesome/free-solid-svg-icons";
+import { faHistory, faArrowAltCircleRight, faCode, faFolder, faServer, faCog } from "@fortawesome/free-solid-svg-icons";
 
 const staticListItems = [
     {
@@ -21,6 +21,10 @@ const staticListItems = [
         icon: faCode
     },
     {
+        name: 'Settings',
+        icon: faCog
+    },
+    {
         name: 'History',
         icon: faHistory
     }
@@ -31,8 +35,8 @@ export default class SideBar extends PureComponent {
         return (
             <div className="sidebar">
                 <ul>
-                    <li className="extra-height">
-                        Avihay@three-dev.com
+                    <li className="extra-height title">
+                        Termor
                     </li>
                     {staticListItems.map((item) => (
                         <li key={item.name} className={item.isActive ? 'active' : ''}>
