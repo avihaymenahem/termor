@@ -18,6 +18,7 @@
     "bootstrap": "^4.2.1",
     "classnames": "^2.2.6",
     "electron": "^4.0.3",
+    "material-ui": "^0.20.2",
     "nedb": "^1.8.0",
     "node-pty": "^0.8.1",
     "prop-types": "^15.6.2",
