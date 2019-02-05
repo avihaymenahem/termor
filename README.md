@@ -1,3 +1,11 @@
+## Welcome to Termor
+SSH & RDP open sourced solution for all platforms
+
+## Technologies:
+- React
+- Reactstrap
+- Electron
+
 ## Installing
 
 In the project directory, run the following:
