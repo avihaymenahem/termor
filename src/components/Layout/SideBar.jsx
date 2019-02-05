@@ -18,27 +18,27 @@ const staticListItems = [
     {
         name: 'SFTP',
         icon: faFolder,
-        route: "/"
+        route: "/notexist"
     },
     {
         name: 'Port Forwarding',
         icon: faArrowAltCircleRight,
-        route: "/"
+        route: "/notexist"
     },
     {
         name: 'Snippets',
         icon: faCode,
-        route: "/"
+        route: "/notexist"
     },
     {
         name: 'Settings',
         icon: faCog,
-        route: "/"
+        route: "/notexist"
     },
     {
         name: 'History',
         icon: faHistory,
-        route: "/"
+        route: "/notexist"
     }
 ]
 

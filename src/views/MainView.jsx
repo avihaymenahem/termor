@@ -41,7 +41,7 @@ class MainView extends Component {
 		return (
 			<React.Fragment>
 				{this.renderTopConnectBar()}
-				<Terminal value={this.state.connectQuery}/>
+				<Terminal value={this.state.connectQuery}/> 
 			</React.Fragment>
 		);
     }
