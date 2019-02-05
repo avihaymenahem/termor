@@ -43,6 +43,20 @@ const staticListItems = [
 ]
 
 export default class SideBar extends PureComponent {
+
+    _renderListItemChild(item) {
+        return (
+            <Link to={item.route} key={item.name}>
+                <li className={item.isActive ? 'active' : ''}>
+                    <span className="icon">
+                        <FontAwesomeIcon icon={item.icon}/>
+                    </span>
+                    <span className="text">{item.name}</span>
+                </li>
+            </Link>
+        );
+    }
+
     render() {
         return (
             <div className="sidebar">
@@ -50,16 +64,7 @@ export default class SideBar extends PureComponent {
                     <li className="extra-height title">
                         Termor
                     </li>
-                    {staticListItems.map((item) => (
-                        <Link to={item.route}>
-                            <li key={item.name} className={item.isActive ? 'active' : ''}>
-                                <span className="icon">
-                                    <FontAwesomeIcon icon={item.icon}/>
-                                </span>
-                                    <span className="text">{item.name}</span>
-                            </li>
-                        </Link>
-                    ))}
+                    {staticListItems.map((item) => this._renderListItemChild(item))}
                 </ul>
             </div>
         );

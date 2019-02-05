@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import WithLayout from '../HOC/WithLayout';
-import Layout from '../components/Layout/Layout';
 import Terminal from '../components/Terminal';
 import { Button } from 'reactstrap';
 
@@ -27,7 +26,13 @@ class MainView extends Component {
 		return (
 			<div className="top-connect-bar">
 				<input placeholder="ssh user@hostname -p port..." ref={ref => this.connectInputRef = ref}/>
-				<Button variant="outlined" color="secondary" onClick={this._connectButtonHandler}>Connect</Button>
+				<Button
+					size="sm"
+					variant="outlined"
+					color="secondary"
+					onClick={this._connectButtonHandler}>
+					Connect
+				</Button>
 			</div>
 		);
 	}
