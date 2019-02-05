@@ -9,6 +9,7 @@ const shell = process.env[os.platform() === 'win32' ? 'COMSPEC' : 'SHELL'];
 
 export default class Terminal extends PureComponent {
     containerRef = null;
+    shellProcess = null;
     xterm = null;
 
     constructor(props) {
@@ -31,26 +32,31 @@ export default class Terminal extends PureComponent {
     }
 
     componentDidMount() {
-        const ptyProcess = pty.spawn(shell, [], {
+        this.shellProcess = pty.spawn(shell, [], {
             name: 'xterm-256color',
             cwd: process.cwd(),
             env: process.env
         });
 
         this.xterm.open(this.containerRef);
-        //this.xterm.fit();
 
         this.xterm.on('data', (data) => {
-            ptyProcess.write(data);
+            this.shellProcess.write(data);
         });
 
         this.xterm.on('paste', (data, ev) => {
             this.write(data);
         });
 
-        ptyProcess.on('data', (data) => {
+        this.shellProcess.on('data', (data) => {
             this.write(data);
         });
+    }
+
+    componentDidUpdate() {
+        if(this.props.value) {
+            this.shellProcess.write(`${this.props.value}\r`);
+        }
     }
 
     componentWillUnmount() {

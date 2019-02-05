@@ -6,6 +6,7 @@
 html, body, #root, .main-layout-container {
     height: 100%;
     font-family: 'Roboto', sans-serif;
+    overflow: hidden;
 }
 
 body {
@@ -79,7 +80,7 @@ body {
 }
 
 .top-connect-bar {
-    height: 58px; 
+    height: 67px; 
     padding: 7px;
     background-color: rgb(40,42,60);
 }
@@ -95,17 +96,8 @@ body {
 }
 
 .top-connect-bar button {
-    cursor: pointer;
     position: absolute;
     right: 14px;
-    background-color: rgba(63,66,87,1);
-    border: 1px solid rgba(255,255,255,0.2);
-    top: 14px;
+    top: 15px;
     color: #fff;
-    padding: 5px 10px;
-    border-radius: 3px;
-}
-
-.top-connect-bar button:hover {
-    background-color: rgb(52, 55, 75);
 }

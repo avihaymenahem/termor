@@ -7,10 +7,10 @@ export default class Layout extends PureComponent {
         return (
             <Container fluid className="main-layout-container">
                 <Row noGutters style={{ height: '100%' }}> 
-                    <Col xs="2" sm="2">
+                    <Col xs="3" sm="3">
                         <SideBar></SideBar>
                     </Col>
-                    <Col xs="10" sm="10">
+                    <Col xs="9" sm="9">
                         {this.props.children}   
                     </Col>
                 </Row>
