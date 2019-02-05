@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import WithLayout from '../HOC/WithLayout';
 import Layout from '../components/Layout/Layout';
 import Terminal from '../components/Terminal';
 import { Button } from 'reactstrap';
@@ -33,12 +34,12 @@ class MainView extends Component {
 
     render() {
 		return (
-			<Layout>
+			<React.Fragment>
 				{this.renderTopConnectBar()}
 				<Terminal value={this.state.connectQuery}/>
-			</Layout>
+			</React.Fragment>
 		);
     }
 }
 
-export default MainView;
+export default WithLayout(MainView);

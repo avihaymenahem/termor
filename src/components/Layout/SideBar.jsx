@@ -1,32 +1,44 @@
 import React, { PureComponent } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHistory, faArrowAltCircleRight, faCode, faFolder, faServer, faCog } from "@fortawesome/free-solid-svg-icons";
+import { Link } from 'react-router-dom';
+import { faHistory, faArrowAltCircleRight, faCode, faFolder, faServer, faCog, faLaptop } from "@fortawesome/free-solid-svg-icons";
 
 const staticListItems = [
     {
         name: 'Hosts',
         isActive: true,
-        icon: faServer
+        icon: faServer,
+        route: "/"
+    },
+    {
+        name: 'RDP',
+        icon: faLaptop,
+        route: "/rdp"
     },
     {
         name: 'SFTP',
-        icon: faFolder
+        icon: faFolder,
+        route: "/"
     },
     {
         name: 'Port Forwarding',
-        icon: faArrowAltCircleRight
+        icon: faArrowAltCircleRight,
+        route: "/"
     },
     {
         name: 'Snippets',
-        icon: faCode
+        icon: faCode,
+        route: "/"
     },
     {
         name: 'Settings',
-        icon: faCog
+        icon: faCog,
+        route: "/"
     },
     {
         name: 'History',
-        icon: faHistory
+        icon: faHistory,
+        route: "/"
     }
 ]
 
@@ -39,12 +51,14 @@ export default class SideBar extends PureComponent {
                         Termor
                     </li>
                     {staticListItems.map((item) => (
-                        <li key={item.name} className={item.isActive ? 'active' : ''}>
-                            <span className="icon">
-                                <FontAwesomeIcon icon={item.icon}/>
-                            </span>
-                            <span className="text">{item.name}</span>
-                        </li>
+                        <Link to={item.route}>
+                            <li key={item.name} className={item.isActive ? 'active' : ''}>
+                                <span className="icon">
+                                    <FontAwesomeIcon icon={item.icon}/>
+                                </span>
+                                    <span className="text">{item.name}</span>
+                            </li>
+                        </Link>
                     ))}
                 </ul>
             </div>

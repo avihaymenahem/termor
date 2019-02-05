@@ -58,13 +58,9 @@ export default class Terminal extends PureComponent {
         }
     }
 
-    componentWillUnmount() {
-        this.xterm.close();
-    }
-
     render() {
         return (
-            <div style={{ width: '100%', height: 'calc(100% - 60px)', backgroundColor: 'black' }} ref={(ref) => this.containerRef = ref}></div>
+            <div style={{ width: '100%', height: 'calc(100% - 60px)', padding: "10px", backgroundColor: 'black' }} ref={(ref) => this.containerRef = ref}></div>
         );
     }
 }
