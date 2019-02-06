@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import Credentials from '../../services/DB/Credentials';
 import WithLayout from '../../HOC/WithLayout';
-import { Nav, Navbar, NavbarBrand, NavItem, Table, Button } from 'reactstrap';
+import { Nav, Navbar, NavbarBrand, NavItem, Table } from 'reactstrap';
 //import CredentialsModel from '../services/DB/Models/CredentialsModel';
 import NewCredentialsPartial from '../Partials/NewCredentialsPartial';
 import Drawer from '../../components/Drawer/Drawer';
@@ -60,8 +60,9 @@ class CredentialsView extends PureComponent {
                     </Nav>
                 </Navbar>
                 <div style={{ padding: 10 }}>
-                <Drawer content={NewCredentialsPartial} isOpened={this.state.drawerOpen} onClose={this.closeDrawer}/>
+                    <Drawer content={NewCredentialsPartial} isOpened={this.state.drawerOpen} onClose={this.closeDrawer}/>
                     <Table
+                        hover
                         dark>
                         <thead>
                             <tr>

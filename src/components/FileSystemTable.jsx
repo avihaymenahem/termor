@@ -44,7 +44,9 @@ export default class FileSystemTable extends PureComponent {
     render() {
         const { tree } = this.props;
         return (
-            <Table dark>
+            <Table
+                hover
+                dark>
                 <thead>
                     <tr>
                         <th>Name</th>

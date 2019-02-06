@@ -65,7 +65,7 @@ class SftpView extends PureComponent {
                 <Container fluid>
                     <Row>
                         <Col>
-                            <span>{this.routeOrRoot()}</span>
+                            Local: <span>{this.routeOrRoot()}</span>
                         </Col>
                     </Row>
                     <Row noGutters>
