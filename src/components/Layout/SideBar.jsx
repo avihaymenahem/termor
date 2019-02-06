@@ -1,12 +1,11 @@
 import React, { PureComponent } from 'react';
+import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link } from 'react-router-dom';
-import { faHistory, faArrowAltCircleRight, faCode, faFolder, faServer, faCog, faLaptop } from "@fortawesome/free-solid-svg-icons";
+import { faHistory, faArrowAltCircleRight, faCode, faFolder, faServer, faCog, faLaptop, faLock } from "@fortawesome/free-solid-svg-icons";
 
 const staticListItems = [
     {
         name: 'Hosts',
-        isActive: true,
         icon: faServer,
         route: "/"
     },
@@ -18,7 +17,7 @@ const staticListItems = [
     {
         name: 'SFTP',
         icon: faFolder,
-        route: "/notexist"
+        route: "/sftp"
     },
     {
         name: 'Port Forwarding',
@@ -28,6 +27,11 @@ const staticListItems = [
     {
         name: 'Snippets',
         icon: faCode,
+        route: "/notexist"
+    },
+    {
+        name: 'Credentials',
+        icon: faLock,
         route: "/notexist"
     },
     {
@@ -46,14 +50,14 @@ export default class SideBar extends PureComponent {
 
     _renderListItemChild(item) {
         return (
-            <Link to={item.route} key={item.name}>
-                <li className={item.isActive ? 'active' : ''}>
+            <NavLink exact to={item.route} key={item.name} activeClassName='active'>
+                <li>
                     <span className="icon">
                         <FontAwesomeIcon icon={item.icon}/>
                     </span>
                     <span className="text">{item.name}</span>
                 </li>
-            </Link>
+            </NavLink>
         );
     }
 

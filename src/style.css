@@ -68,14 +68,14 @@ body {
 }
 
 .sidebar ul li:hover,
-.sidebar ul li.active {
+.sidebar ul .active li {
     background-color: rgba(63,66,87,1);
     color: rgba(255,255,255,1);
     cursor: pointer;
 }
 
 .sidebar ul li:hover .icon,
-.sidebar ul li.active .icon {
+.sidebar ul .active li .icon {
     border: 1px solid #fff;
 }
 
