@@ -1,7 +1,7 @@
 ## Welcome to Termor
 SSH & RDP open sourced solution for all platforms
 
-![Screenshot](https://i.imgur.com/v9rVCuA.png "Screenshot")
+![Screenshot](https://i.imgur.com/jCxx3vP.png "Screenshot")
 
 
 ## Main Libraries:
