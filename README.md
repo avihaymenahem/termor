@@ -1,6 +1,9 @@
 ## Welcome to Termor
 SSH & RDP open sourced solution for all platforms
 
+![Screenshot](https://i.imgur.com/v9rVCuA.png "Screenshot")
+
+
 ## Main Libraries:
 - React
 - Reactstrap
