@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import Credentials from '../../services/DB/Credentials';
 import WithLayout from '../../HOC/WithLayout';
-import { Table, Button } from 'reactstrap';
+import { Nav, Navbar, NavbarBrand, NavItem, Table, Button } from 'reactstrap';
 //import CredentialsModel from '../services/DB/Models/CredentialsModel';
 import NewCredentialsPartial from '../Partials/NewCredentialsPartial';
 import Drawer from '../../components/Drawer/Drawer';
@@ -50,36 +50,42 @@ class CredentialsView extends PureComponent {
         const { credentialsList } = this.state;
 
         return(
-            <div style={{ padding: 10 }}>
+            <React.Fragment>
+                <Navbar color="dark">
+                    <NavbarBrand>Credentials</NavbarBrand>
+                    <Nav navbar>
+                        <NavItem onClick={this.openDrawer}>
+                            Add Credentials
+                        </NavItem>
+                    </Nav>
+                </Navbar>
+                <div style={{ padding: 10 }}>
                 <Drawer content={NewCredentialsPartial} isOpened={this.state.drawerOpen} onClose={this.closeDrawer}/>
-                <h3>Credentials</h3>
-                <Table
-                    dark>
-                    <thead>
-                        <tr>
-                            <th>Display Name</th>
-                            <th>description</th>
-                            <th>actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {credentialsList && credentialsList.map(item => (
-                            <tr key={item._id}>
-                                <td>{item.displayName}</td>
-                                <td>{item.description}</td>
-                                <td className="actions-container">
-                                    <span>Edit</span>
-                                    <span className="spacer"/>
-                                    <span>Delete</span>
-                                </td>
+                    <Table
+                        dark>
+                        <thead>
+                            <tr>
+                                <th>Display Name</th>
+                                <th>description</th>
+                                <th>actions</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </Table>
-                <div className="new-credentials-button-container">
-                    <Button small onClick={this.openDrawer}>Add Credentials</Button>
+                        </thead>
+                        <tbody>
+                            {credentialsList && credentialsList.map(item => (
+                                <tr key={item._id}>
+                                    <td>{item.displayName}</td>
+                                    <td>{item.description}</td>
+                                    <td className="actions-container">
+                                        <span>Edit</span>
+                                        <span className="spacer"/>
+                                        <span>Delete</span>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </Table>
                 </div>
-            </div>
+            </React.Fragment>
         );
     }
 }
