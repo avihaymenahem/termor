@@ -101,3 +101,7 @@ body {
     top: 18px;
     color: #fff;
 }
+
+.file-type-icon-container {
+    margin-right: 10px;
+}

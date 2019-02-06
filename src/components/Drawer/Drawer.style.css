@@ -1,0 +1,18 @@
+.drawer-container {
+    z-index: 1;
+    height: 100%;
+    width: 400px;
+    position: absolute;
+    top: 0;
+    right: 400px;
+    transition: all 0.5s;
+    background-color: rgba(36,34,54,1);
+    box-shadow: 0 0 30px -10px #000;
+}
+
+.drawer-close-icon {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}

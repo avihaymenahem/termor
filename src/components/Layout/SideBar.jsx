@@ -32,7 +32,7 @@ const staticListItems = [
     {
         name: 'Credentials',
         icon: faLock,
-        route: "/notexist"
+        route: "/credentials"
     },
     {
         name: 'Settings',
