@@ -6,7 +6,7 @@ SSH & RDP open sourced solution for all platforms
 
 ## Main Libraries:
 - React
-- Reactstrap
+- Evergreen UI
 - Xterm.js
 - Electron
 

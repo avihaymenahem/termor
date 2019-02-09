@@ -17,7 +17,8 @@ export default class Terminal extends PureComponent {
         XTerminal.applyAddon(fit);
         this.xterm = new XTerminal({
             cursorBlink: true,
-            disableStdin: false
+            disableStdin: false,
+            cols: 20
         });
 
     }

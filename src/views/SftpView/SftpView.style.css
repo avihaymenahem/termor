@@ -1,0 +1,14 @@
+.page-header {
+    height: 50px;
+    line-height: 50px;
+    padding: 0 20px;
+    background-color: rgba(45,47,63,1);
+}
+
+.table.file-system-table {
+    background-color: rgba(36,37,54,1);
+}
+
+.table.file-system-table thead th {
+    background-color: rgba(45,47,63,1);
+}

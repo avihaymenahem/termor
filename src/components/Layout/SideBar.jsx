@@ -1,7 +1,9 @@
 import React, { PureComponent } from 'react';
 import { NavLink } from 'react-router-dom';
+import { Pane, Text, Heading } from 'evergreen-ui';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHistory, faArrowAltCircleRight, faCode, faFolder, faServer, faCog, faLaptop, faLock } from "@fortawesome/free-solid-svg-icons";
+import { majorScale } from 'evergreen-ui/commonjs/scales';
 
 const staticListItems = [
     {
@@ -51,26 +53,28 @@ export default class SideBar extends PureComponent {
     _renderListItemChild(item) {
         return (
             <NavLink exact to={item.route} key={item.name} activeClassName='active'>
-                <li>
-                    <span className="icon">
+                <Pane borderTop padding={10} flexDirection="row" display="flex" hoverElevation={3}>
+                    <Pane marginRight={majorScale(1)}>
                         <FontAwesomeIcon icon={item.icon}/>
-                    </span>
-                    <span className="text">{item.name}</span>
-                </li>
+                    </Pane>
+                    <Pane>
+                        <Text>{item.name}</Text>
+                    </Pane>
+                </Pane>
             </NavLink>
         );
     }
 
     render() {
         return (
-            <div className="sidebar">
-                <ul>
-                    <li className="extra-height title">
+            <Pane>
+                <Pane height={68} display="flex" alignItems="center">
+                    <Heading size={600} flex={1} textAlign="center">
                         Termor
-                    </li>
-                    {staticListItems.map((item) => this._renderListItemChild(item))}
-                </ul>
-            </div>
+                    </Heading>
+                </Pane>
+                {staticListItems.map((item) => this._renderListItemChild(item))}
+            </Pane>
         );
     }
 }

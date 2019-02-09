@@ -1,6 +1,6 @@
 export default class CredentialsModel {
-    displayName = "";
-    username = "";
-    password = "";
-    description = "";
+    username = null;
+    password = null;
+    label = null;
+    _id = null;
 }

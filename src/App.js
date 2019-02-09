@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import MainView from './views/MainView';
 import RDPView from './views/RDPView';
-import SftpView from './views/SftpView';
+import SftpView from './views/SftpView/SftpView';
 import CredentialsView from './views/CredentialsView/CredentialsView';
 import NotYetExistView from './views/NotYetExistView';
 
 class App extends Component {
 	render() {
-		return (
+		return ( 
 			<Router>
 				<Switch>
 					<Route path="/" exact component={MainView}/>

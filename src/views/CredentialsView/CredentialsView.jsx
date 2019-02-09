@@ -1,14 +1,13 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import Credentials from '../../services/DB/Credentials';
 import WithLayout from '../../HOC/WithLayout';
-import { Nav, Navbar, NavbarBrand, NavItem, Table } from 'reactstrap';
-//import CredentialsModel from '../services/DB/Models/CredentialsModel';
+import { Table, Text, SideSheet } from 'evergreen-ui';
+import { Pane, Heading, Button, majorScale, IconButton, toaster } from 'evergreen-ui';
 import NewCredentialsPartial from '../Partials/NewCredentialsPartial';
-import Drawer from '../../components/Drawer/Drawer';
 
 import './CredentialsView.style.css';
 
-class CredentialsView extends PureComponent {
+class CredentialsView extends Component {
     state = {
         credentialsList: [],
         drawerOpen: false
@@ -20,22 +19,20 @@ class CredentialsView extends PureComponent {
 
         this.openDrawer = this.openDrawer.bind(this);
         this.closeDrawer = this.closeDrawer.bind(this);
-
-        // const credModel = new CredentialsModel();
-        // credModel.username = "test";
-        // credModel.password = "password";
-        // credModel.description = "Testing Purposes";
-        // credModel.displayName = "QA Testing User";
-
-        // this.credentials.insert(credModel);
+        this._deleteButtonClickHandler = this._deleteButtonClickHandler.bind(this);
     }
 
-    async componentDidMount() {
-        const credentialsList = await this.credentials.find({});
-        
-        if(credentialsList) {
-            this.setState({ credentialsList })
-        }
+    componentDidMount() {
+        this.loadData();
+    }
+
+    loadData(item) {
+        this.credentials.find({}).then(items => {
+            if(item) {
+                items.push(item);
+            }
+            this.setState({ credentialsList: items })
+        });
     }
 
     openDrawer() {
@@ -46,46 +43,99 @@ class CredentialsView extends PureComponent {
         this.setState({ drawerOpen: false });
     }
 
+    _deleteButtonClickHandler(item) {
+        return () => {
+            this.credentials.delete(item).then(() => {
+                this.loadData();
+                toaster.notify(`Item ${item.label} removed`);
+            });
+        }
+    }
+
+    _renderTableChild(item) {
+        return (
+            <Table.Row key={item.label}>
+                <Table.Cell>
+                    <Text>
+                    	{item.label}
+                    </Text>
+                </Table.Cell>
+                <Table.Cell>
+                    <Text>
+                        {item.username}
+                    </Text>
+                </Table.Cell>
+                <Table.Cell>
+                    <IconButton
+                        icon="trash"
+                        intent="danger"
+                        marginRight={majorScale(1)}
+                        onClick={this._deleteButtonClickHandler(item)}
+                    />
+                    <IconButton icon="edit" />
+                </Table.Cell>
+            </Table.Row>
+         );
+    }
+
     render() {
-        const { credentialsList } = this.state;
+        const self = this;
+        const { credentialsList } = self.state;
 
         return(
             <React.Fragment>
-                <Navbar color="dark">
-                    <NavbarBrand>Credentials</NavbarBrand>
-                    <Nav navbar>
-                        <NavItem onClick={this.openDrawer}>
-                            Add Credentials
-                        </NavItem>
-                    </Nav>
-                </Navbar>
-                <div style={{ padding: 10 }}>
-                    <Drawer content={NewCredentialsPartial} isOpened={this.state.drawerOpen} onClose={this.closeDrawer}/>
-                    <Table
-                        hover
-                        dark>
-                        <thead>
-                            <tr>
-                                <th>Display Name</th>
-                                <th>description</th>
-                                <th>actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {credentialsList && credentialsList.map(item => (
-                                <tr key={item._id}>
-                                    <td>{item.displayName}</td>
-                                    <td>{item.description}</td>
-                                    <td className="actions-container">
-                                        <span>Edit</span>
-                                        <span className="spacer"/>
-                                        <span>Delete</span>
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </Table>
-                </div>
+                <Pane
+                    borderBottom
+                    display="flex"
+                    alignItems="center"
+                    height={69}
+				>
+					<Pane
+						flex={8}
+						padding={majorScale(2)}
+					>
+                        <Heading>Credentials</Heading>
+                    </Pane>
+					<Pane
+						flex={2}
+						display="flex"
+						justifyContent="flex-end"
+						padding={majorScale(2)}
+					>
+                        <Button onClick={self.openDrawer}>Add Credentials</Button>
+                    </Pane>
+                </Pane>
+                <Pane height="100%">
+					<SideSheet
+						isShown={self.state.drawerOpen}
+						onCloseComplete={() => self.setState({ drawerOpen: false })}
+						containerProps={{
+							display: 'flex',
+							flex: '1',
+							flexDirection: 'column',
+                        }}
+                        children={({close}) => (
+                            <NewCredentialsPartial onClose={(item) => { close(); self.loadData(item); }}/>
+                        )}
+					>
+					</SideSheet>
+					<Table height="100%">
+						<Table.Head>
+							<Table.HeaderCell>
+								<Text>Label</Text>
+							</Table.HeaderCell>
+							<Table.HeaderCell>
+								<Text>Username</Text>
+							</Table.HeaderCell>
+							<Table.HeaderCell>
+								<Text>Actions</Text>
+							</Table.HeaderCell>
+						</Table.Head>
+						<Table.Body height="calc(100% - 100px)">
+							{credentialsList && credentialsList.map(item => self._renderTableChild(item))}
+						</Table.Body>
+					</Table>
+				</Pane>
             </React.Fragment>
         );
     }

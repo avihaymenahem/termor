@@ -22,7 +22,15 @@ export default class Datastore {
                 if(err) return reject(err);
                 return resolve(newDoc);
             });
-            
+        });
+    }
+
+    delete(doc) {
+        return new Promise((resolve, reject) => {
+            this.db.remove({ _id: doc._id }, {}, (err, numRemoved) => {
+                if(err) return reject(err);
+                return resolve(numRemoved);
+            });
         });
     }
 }
